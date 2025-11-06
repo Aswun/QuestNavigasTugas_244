@@ -10,6 +10,7 @@ import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -38,7 +39,7 @@ fun FormIsian (
         Column (modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally ) {
-            OutlinedTextField(
+            OutlinedTextField (
                 value = "",
                 singleLine = true,
                 modifier = Modifier
@@ -47,11 +48,23 @@ fun FormIsian (
                 label = { Text(text = "Nama Lengkap") },
                 onValueChange = {},
             )
-            HorizontalDivider(modifier = Modifier
+            HorizontalDivider (modifier = Modifier
                 .padding(20.dp)
                 .width(250.dp),
                 thickness = Thickness,
                 color = Color.Red)
+            Row {
+                JenisK.forEach {
+                    item->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = false,
+                            onClick = {item}
+                        )
+                        Text(text = item)
+                    }
+                }
+            }
 
     }
 }
