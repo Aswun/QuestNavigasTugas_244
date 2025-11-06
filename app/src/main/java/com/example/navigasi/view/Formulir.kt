@@ -6,8 +6,11 @@ import android.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -41,7 +44,7 @@ fun FormIsian (
         Column (modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally ) {
-            OutlinedTextField (
+            OutlinedTextField(
                 value = "",
                 singleLine = true,
                 modifier = Modifier
@@ -50,38 +53,46 @@ fun FormIsian (
                 label = { Text(text = "Nama Lengkap") },
                 onValueChange = {},
             )
-            HorizontalDivider (modifier = Modifier
-                .padding(20.dp)
-                .width(250.dp),
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(20.dp)
+                    .width(250.dp),
                 thickness = Thickness,
-                color = Color.Red)
+                color = Color.Red
+            )
             Row {
-                JenisK.forEach {
-                    item->
+                JenisK.forEach { item ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = false,
-                            onClick = {item}
+                            onClick = { item }
                         )
                         Text(text = item)
                     }
                 }
             }
-            HorizontalDivider (modifier = Modifier
-                .padding(20.dp)
-                .width(250.dp),
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(20.dp)
+                    .width(250.dp),
                 thickness = Thickness,
                 color = Color.Red
             )
-            OutlinedTextField (
+            OutlinedTextField(
                 value = "",
                 singleLine = true,
                 modifier = Modifier
                     .width(250.dp),
-                label = {Text(text = "Alamat")},
+                label = { Text(text = "Alamat") },
                 onValueChange = {},
             )
             Spacer(modifier = Modifier.height(30.dp))
-
+            Button(
+                modifier = Modifier.fillMaxWidth(1f),
+                onClick = OnSubmitBtnClick
+            ) {
+                Text(text = stringResource(R.string.submit))
+            }
+        }
     }
 }
