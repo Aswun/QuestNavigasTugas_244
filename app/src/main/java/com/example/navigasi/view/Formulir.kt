@@ -2,7 +2,6 @@
 
 package com.example.navigasi.view
 
-import android.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
@@ -19,7 +17,6 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.carousel.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.TopAppBar
+import com.example.navigasi.R
 
 @Composable
 fun FormIsian (
@@ -38,7 +39,7 @@ fun FormIsian (
                 title = { Text(stringResource(R.string.home),
                     color = Color.White)},
                 colors = TopAppBarDefaults.
-                        TopAppBarColors(colorResource(id = R.color.teal_700))
+                        topAppBarColors(colorResource(id = R.color.teal_700))
             ) }
     ) { isiRuang ->
         Column (modifier = Modifier.padding(isiRuang),
@@ -57,7 +58,7 @@ fun FormIsian (
                 modifier = Modifier
                     .padding(20.dp)
                     .width(250.dp),
-                thickness = Thickness,
+                thickness = 1.dp,
                 color = Color.Red
             )
             Row {
@@ -75,7 +76,7 @@ fun FormIsian (
                 modifier = Modifier
                     .padding(20.dp)
                     .width(250.dp),
-                thickness = Thickness,
+                thickness = 1.dp,
                 color = Color.Red
             )
             OutlinedTextField(
