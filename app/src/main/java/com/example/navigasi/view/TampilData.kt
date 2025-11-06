@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import com.example.navigasi.R
@@ -22,8 +23,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.fillMaxWidth
 
-@OptIn(ExperimenalMaterial3Api::class)
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData (
     onBackBtnClick:()-> Unit
@@ -61,6 +66,12 @@ fun TampilData (
                     HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
                 }
                 Spacer(modifier = Modifier.height(10.dp))
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackBtnClick
+                ) {
+                    Text(text = stringResource(R.string.back))
+                }
             }
         }
     }
