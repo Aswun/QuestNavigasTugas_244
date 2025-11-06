@@ -17,13 +17,13 @@ fun DataApp (
     modifier: Modifier
 ) {
     Scaffold { isiRuang ->
-        _root_ide_package_.androidx.navigation.NavHost(
+        NavHost(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
 
             modifier = Modifier.padding(isiRuang) {
                 composable(route = Navigasi.Formulir.name) {
-                    FormIsian(
+                    FormIsian (
                         //pilihanJK = JenisK.map { id -> context.resources.getString(id) },
                         OnSubmitBtnClick = {
                             navController.navigate(Navigasi.Detail.name)
@@ -32,10 +32,14 @@ fun DataApp (
                 }
                 composable(route = Navigasi.Detail.name) {
                     TampilData(
-                        onBackBtnClick = { cancelAndBackToFormulir(navController) }
+                        onBackBtnClick = {cancelAndBackToFormulir(navController)}
                     )
                 }
             }
         )
     }
+}
+
+private fun cancelAndBackToFormulir(navController: NavHostController) {
+    navController.popBackStack(Navigasi.Formulir.name, inclusive = false)
 }
