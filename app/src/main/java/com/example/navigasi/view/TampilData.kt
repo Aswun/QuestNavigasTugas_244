@@ -3,6 +3,7 @@ package com.example.navigasi.view
 import android.content.pm.ShortcutInfo
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
@@ -46,17 +47,21 @@ fun TampilData (
                 verticalArrangement = Arrangement.SpacedBy(dimensionResource(id = R.dimen.padding_small))) {
                 items.forEach { item ->
                     Column {
-                        Text(item.first.uppercase(),
-                            fontSize = 16.sp)
-                        Text(text = item.second,
+                        Text(
+                            item.first.uppercase(),
+                            fontSize = 16.sp
+                        )
+                        Text(
+                            text = item.second,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Cursive,
-                            fontSize = 22.sp)
+                            fontSize = 22.sp
+                        )
                     }
                     HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
+                }
+                Spacer(modifier = Modifier.height(10.dp))
             }
         }
-
     }
-    )
 }
