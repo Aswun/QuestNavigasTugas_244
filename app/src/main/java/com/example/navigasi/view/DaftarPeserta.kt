@@ -4,6 +4,7 @@ package com.example.navigasi.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -122,6 +123,23 @@ fun DaftarPeserta (
                 }
 
                 Spacer(modifier = Modifier.height(8.dp))
+
+                Button(
+                    onClick = onGoToForm,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFBA68C8),
+                        contentColor = Color.White
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .padding(horizontal = 20.dp)
+                ) {
+                    Text(
+                        text = "Isi Formulir Pendaftaran", // Teks disederhanakan
+                        fontSize = 16.sp
+                    )
+                }
             }
         }
     }
