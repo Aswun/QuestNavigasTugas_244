@@ -2,14 +2,20 @@
 
 package com.example.navigasi.view
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
@@ -19,7 +25,7 @@ fun DaftarPeserta (
     onGoToForm: () -> Unit
 ) {
     val pesertaData = listOf(
-        "NAMA LENGKAP" to "As Wun",
+        "NAMA LENGKAP" to "Aswin Lutfian Prasetyo",
         "JENIS KELAMIN" to "Laki-Laki",
         "STATUS PERKAWINAN" to "Belum Menikah",
         "ALAMAT" to "Yogyakarta"
@@ -42,7 +48,14 @@ fun DaftarPeserta (
                 )
             )
         }
-    ) {
-
+    ) { isiRuang ->
+        Column(
+            modifier = Modifier
+                .padding(isiRuang)
+                .padding(20.dp)
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
     }
 }
