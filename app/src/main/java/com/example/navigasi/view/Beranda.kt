@@ -24,16 +24,14 @@ import androidx.compose.ui.unit.sp
 import com.example.navigasi.R
 
 @Composable
-fun Beranda (
+fun Beranda(
     modifier: Modifier = Modifier,
     onSubmitClick: () -> Unit
 ) {
-    // Mengubah containerColor menjadi ungu muda untuk nuansa UI yang berbeda
     Scaffold(
         modifier = modifier,
         containerColor = Color(0xFFE1BEE7)
-    ) {
-        paddingValues ->
+    ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -46,10 +44,11 @@ fun Beranda (
                 text = "Selamat Datang",
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF6A1B9A), // Ungu tua
+                color = Color(0xFF6A1B9A),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(bottom = 30.dp)
             )
+
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = "Logo",
@@ -70,6 +69,7 @@ fun Beranda (
                 color = Color(0xFF6A1B9A),
                 modifier = Modifier.padding(bottom = 30.dp)
             )
+
             Text(
                 text = "Aswin Lutfian Prasetyo",
                 fontSize = 18.sp,

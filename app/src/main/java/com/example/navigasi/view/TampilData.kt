@@ -27,26 +27,28 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.fillMaxWidth
 import com.example.navigasi.DataDiri
+import com.example.navigasi.STATIC_DATA
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TampilData (
-    dataDiri: DataDiri,
-    onBackBtnClick:()-> Unit
+fun TampilData(
+    onBackBtnClick: () -> Unit
 ) {
-    // Membangun daftar item dari objek DataDiri yang diterima
+    val dataDiri = STATIC_DATA
+
     val items = listOf(
         Pair(stringResource(R.string.nama_lengkap), dataDiri.nama),
         Pair(stringResource(R.string.jenis_kelamin), dataDiri.jenisKelamin),
         Pair(stringResource(R.string.alamat), dataDiri.alamat)
     )
+
     Scaffold(
         modifier = Modifier,
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.tampil), color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.purple_700)) // Mengubah warna header
+                colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.purple_700))
             )
         }) { isiRuang ->
         Column(
@@ -58,14 +60,14 @@ fun TampilData (
             Column(
                 modifier = Modifier
                     .padding(dimensionResource(id = R.dimen.padding_medium))
-                    .weight(1f), // Agar konten mengisi ruang sisa
+                    .weight(1f),
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
             ) {
                 items.forEach { item ->
                     Column(modifier = Modifier.padding(vertical = 4.dp)) {
                         Text(
                             item.first.uppercase(),
-                            fontSize = 14.sp, 
+                            fontSize = 14.sp,
                             color = Color.DarkGray
                         )
                         Text(
@@ -75,7 +77,7 @@ fun TampilData (
                             fontSize = 24.sp
                         )
                     }
-                    HorizontalDivider(thickness = 2.dp, color = Color(0xFFD1C4E9)) // Mengubah warna dan ketebalan divider
+                    HorizontalDivider(thickness = 2.dp, color = Color(0xFFD1C4E9))
                 }
             }
 

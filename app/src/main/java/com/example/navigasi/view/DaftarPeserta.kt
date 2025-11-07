@@ -28,23 +28,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.navigasi.R
+import com.example.navigasi.STATIC_DATA
 
 @Composable
-fun DaftarPeserta (
+fun DaftarPeserta(
     modifier: Modifier = Modifier,
     onBackToHome: () -> Unit,
     onGoToForm: () -> Unit
 ) {
+    val dataStatis = STATIC_DATA
+
     val pesertaData = listOf(
-        "NAMA LENGKAP" to "Aswin Lutfian Prasetyo",
-        "JENIS KELAMIN" to "Laki-Laki",
+        "NAMA LENGKAP" to dataStatis.nama,
+        "JENIS KELAMIN" to dataStatis.jenisKelamin,
         "STATUS PERKAWINAN" to "Belum Menikah",
-        "ALAMAT" to "Yogyakarta"
+        "ALAMAT" to dataStatis.alamat
     )
 
     Scaffold(
         modifier = modifier,
-        containerColor = Color(0xFFF3E5F5), // Latar ungu muda
+        containerColor = Color(0xFFF3E5F5),
         topBar = {
             TopAppBar(
                 title = {
@@ -55,7 +58,7 @@ fun DaftarPeserta (
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF9C27B0) // Ungu tua header
+                    containerColor = Color(0xFF9C27B0)
                 )
             )
         }
@@ -69,7 +72,7 @@ fun DaftarPeserta (
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Column(
-                modifier = Modifier.weight(1f) // Gunakan weight agar tombol ke bawah
+                modifier = Modifier.weight(1f)
             ) {
                 pesertaData.forEach { (label, value) ->
                     Card(
@@ -101,7 +104,7 @@ fun DaftarPeserta (
                     }
                 }
             }
-            // Tombol di bagian bawah
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -117,7 +120,7 @@ fun DaftarPeserta (
                         .padding(horizontal = 20.dp)
                 ) {
                     Text(
-                        text = stringResource(id = R.string.back), // Mengubah teks menjadi "Back" (kembali ke beranda)
+                        text = stringResource(id = R.string.back),
                         fontSize = 16.sp
                     )
                 }
@@ -136,7 +139,7 @@ fun DaftarPeserta (
                         .padding(horizontal = 20.dp)
                 ) {
                     Text(
-                        text = "Isi Formulir Pendaftaran", // Teks disederhanakan
+                        text = "Isi Formulir Pendaftaran",
                         fontSize = 16.sp
                     )
                 }

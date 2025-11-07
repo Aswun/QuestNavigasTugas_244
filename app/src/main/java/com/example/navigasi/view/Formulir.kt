@@ -25,6 +25,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.mutableStateOf
@@ -33,55 +34,70 @@ import com.example.navigasi.R
 import com.example.navigasi.DataDiri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.example.navigasi.STATIC_DATA
 
 @Composable
-fun FormIsian (
+fun FormIsian(
     modifier: Modifier = Modifier,
-    jenisK:List<String> = listOf("laki-laki","perempuan"),
-    onSubmitBtnClick : (DataDiri) -> Unit
+    jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
+    onSubmitBtnClick: () -> Unit
 ) {
-    var namaInput by remember { mutableStateOf("") }
-    var alamatInput by remember { mutableStateOf("") }
-    var jenisKelaminSelected by remember { mutableStateOf(jenisK.first()) }
+    val namaStatic = STATIC_DATA.nama
+    val jkStatic = STATIC_DATA.jenisKelamin
+    val alamatStatic = STATIC_DATA.alamat
 
-    Scaffold (modifier=Modifier, {
+    Scaffold(
+        modifier = Modifier,
+        topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.home),
-                    color = Color.White)},
-                colors = TopAppBarDefaults.
-                        topAppBarColors(colorResource(id = R.color.teal_700))
-            ) }
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.home),
+                        color = Color.White
+                    )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = colorResource(id = R.color.purple_500)
+                )
+            )
+        }
     ) { isiRuang ->
-        Column (modifier = Modifier.padding(isiRuang),
+        Column(
+            modifier = Modifier
+                .padding(isiRuang)
+                .fillMaxSize()
+                .padding(horizontal = 30.dp),
             verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally ) {
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             OutlinedTextField(
-                value = namaInput,
-                onValueChange = { namaInput = it },
+                value = namaStatic,
+                onValueChange = { },
                 singleLine = true,
-                label = { Text(text = "Nama Lengkap") },
+                label = { Text(text = "Aswin Lutfian Prasetyo") },
+                readOnly = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .fillMaxWidth(0.9f)
             )
+
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
-                text = "JENIS KELAMIN:",
+                text = "JENIS KELAMIN: Laki-Laki",
                 modifier = Modifier
                     .align(Alignment.Start)
                     .padding(start = 10.dp),
                 color = Color.Gray
             )
-            // Jenis Kelamin
             jenisK.forEach { item ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth(0.9f)
                 ) {
                     RadioButton(
-                        selected = jenisKelaminSelected == item,
-                        onClick = { jenisKelaminSelected = item }
+                        selected = jkStatic == item,
+                        onClick = { }
                     )
                     Text(text = item)
                 }
@@ -89,29 +105,20 @@ fun FormIsian (
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Alamat
             OutlinedTextField(
-                value = alamatInput,
-                onValueChange = { alamatInput = it },
-                singleLine = false, // Diubah menjadi multi-line untuk implementasi berbeda
-                label = { Text(text = "Alamat") },
+                value = alamatStatic,
+                onValueChange = { },
+                singleLine = false,
+                label = { Text(text = "Jalan Rajawali, Yogyakarta") },
+                readOnly = true,
                 modifier = Modifier.fillMaxWidth(0.9f)
             )
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            // Tombol Submit
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    val data = DataDiri(
-                        nama = namaInput,
-                        jenisKelamin = jenisKelaminSelected,
-                        alamat = alamatInput
-                    )
-                    onSubmitBtnClick(data)
-                },
-                enabled = namaInput.isNotBlank() && alamatInput.isNotBlank() // Logika validasi berbeda
+                onClick = onSubmitBtnClick
             ) {
                 Text(text = stringResource(id = R.string.submit))
             }
