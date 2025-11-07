@@ -19,41 +19,36 @@ import com.example.navigasi.ui.theme.NavigasiTheme
 import com.example.navigasi.view.Beranda
 import com.example.navigasi.view.DaftarPeserta
 
-enum class MainScreen {
-    BERANDA,
-    DAFTAR_PESERTA,
-    FORM_NAV_GRAPH
-}
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             NavigasiTheme {
-                var currentScreen by remember { mutableStateOf(MainScreen.BERANDA) }
+                var currentPage by remember { mutableStateOf("beranda") }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    when (currentScreen) {
-                        MainScreen.BERANDA -> {
+                    when (currentPage) {
+                        "beranda" -> {
                             Beranda(
                                 onSubmitClick = {
-                                    currentScreen = MainScreen.DAFTAR_PESERTA
+                                    currentPage = "daftar_peserta"
                                 },
                                 modifier = Modifier.padding(innerPadding)
                             )
                         }
-                        MainScreen.DAFTAR_PESERTA -> {
+                        "daftar_peserta" -> {
                             DaftarPeserta(
                                 onBackToHome = {
-                                    currentScreen = MainScreen.BERANDA
+                                    currentPage = "beranda"
                                 },
                                 onGoToForm = {
-                                    currentScreen = MainScreen.FORM_NAV_GRAPH
+                                    currentPage = "form"
                                 },
                                 modifier = Modifier.padding(innerPadding)
                             )
                         }
-                        MainScreen.FORM_NAV_GRAPH -> {
+                        "form" -> {
                             DataApp(
                                 modifier = Modifier.padding(innerPadding)
                             )
