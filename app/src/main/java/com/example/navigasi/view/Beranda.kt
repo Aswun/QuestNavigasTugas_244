@@ -74,6 +74,13 @@ fun Beranda (
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
+            Text(
+                text = "20230140244",
+                fontSize = 16.sp,
+                color = Color(0xFF6A1B9A),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 30.dp)
+            )
         }
     }
 }
