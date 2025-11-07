@@ -5,8 +5,12 @@ package com.example.navigasi.view
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -56,6 +60,24 @@ fun DaftarPeserta (
                 .fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
-        )
+        ) {
+            Column(
+                modifier = Modifier.weight(1f) // Gunakan weight agar tombol ke bawah
+            ) {
+                pesertaData.forEach { (label, value) ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 6.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White
+                        ),
+                        shape = MaterialTheme.shapes.medium,
+                        elevation = CardDefaults.cardElevation(2.dp)
+                    ) {
+
+                    }
+            }
+        }
     }
 }
