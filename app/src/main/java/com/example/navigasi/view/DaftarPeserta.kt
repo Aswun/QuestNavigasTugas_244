@@ -6,7 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -19,9 +22,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.navigasi.R
 
 @Composable
 fun DaftarPeserta (
@@ -93,6 +98,28 @@ fun DaftarPeserta (
                             )
                         }
                     }
+                }
+            }
+            // Tombol di bagian bawah
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    onClick = onBackToHome,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF9C27B0),
+                        contentColor = Color.White
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .padding(horizontal = 20.dp)
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.back), // Mengubah teks menjadi "Back" (kembali ke beranda)
+                        fontSize = 16.sp
+                    )
+                }
             }
         }
     }
