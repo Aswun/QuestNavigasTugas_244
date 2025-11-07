@@ -27,13 +27,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import com.example.navigasi.R
+import com.example.navigasi.DataDiri
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
 fun FormIsian (
-    JenisK:List<String> = listOf("laki-laki","perempuan"),
-    OnSubmitBtnClick : () -> Unit
+    modifier: Modifier = Modifier,
+    jenisK:List<String> = listOf("laki-laki","perempuan"),
+    onSubmitBtnClick : (DataDiri) -> Unit
 ) {
+    var namaInput by remember { mutableStateOf("") }
+    var alamatInput by remember { mutableStateOf("") }
+    var jenisKelaminSelected by remember { mutableStateOf(jenisK.first()) }
+
     Scaffold (modifier=Modifier, {
             TopAppBar(
                 title = { Text(stringResource(R.string.home),
@@ -46,53 +56,64 @@ fun FormIsian (
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally ) {
             OutlinedTextField(
-                value = "",
+                value = namaInput,
+                onValueChange = { namaInput = it },
                 singleLine = true,
+                label = { Text(text = "Nama Lengkap") },
                 modifier = Modifier
                     .padding(top = 20.dp)
-                    .width(250.dp),
-                label = { Text(text = "Nama Lengkap") },
-                onValueChange = {},
+                    .fillMaxWidth(0.9f)
             )
-            HorizontalDivider(
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text(
+                text = "JENIS KELAMIN:",
                 modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
-                thickness = 1.dp,
-                color = Color.Red
+                    .align(Alignment.Start)
+                    .padding(start = 10.dp),
+                color = Color.Gray
             )
-            Row {
-                JenisK.forEach { item ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        RadioButton(
-                            selected = false,
-                            onClick = { item }
-                        )
-                        Text(text = item)
-                    }
+            // Jenis Kelamin
+            jenisK.forEach { item ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth(0.9f)
+                ) {
+                    RadioButton(
+                        selected = jenisKelaminSelected == item,
+                        onClick = { jenisKelaminSelected = item }
+                    )
+                    Text(text = item)
                 }
             }
-            HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
-                thickness = 1.dp,
-                color = Color.Red
-            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            // Alamat
             OutlinedTextField(
-                value = "",
-                singleLine = true,
-                modifier = Modifier
-                    .width(250.dp),
+                value = alamatInput,
+                onValueChange = { alamatInput = it },
+                singleLine = false, // Diubah menjadi multi-line untuk implementasi berbeda
                 label = { Text(text = "Alamat") },
-                onValueChange = {},
+                modifier = Modifier.fillMaxWidth(0.9f)
             )
+
             Spacer(modifier = Modifier.height(30.dp))
+
+            // Tombol Submit
             Button(
-                modifier = Modifier.fillMaxWidth(1f),
-                onClick = OnSubmitBtnClick
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    val data = DataDiri(
+                        nama = namaInput,
+                        jenisKelamin = jenisKelaminSelected,
+                        alamat = alamatInput
+                    )
+                    onSubmitBtnClick(data)
+                },
+                enabled = namaInput.isNotBlank() && alamatInput.isNotBlank() // Logika validasi berbeda
             ) {
-                Text(text = stringResource(R.string.submit))
+                Text(text = stringResource(id = R.string.submit))
             }
         }
     }
