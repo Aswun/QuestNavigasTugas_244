@@ -98,6 +98,7 @@ fun Beranda (
                     .padding(horizontal = 40.dp)
             ) {
                 Text(text = "Lihat Daftar Peserta", fontSize = 16.sp)
+            }
         }
     }
 }
