@@ -66,6 +66,14 @@ fun Beranda (
                 color = Color(0xFF6A1B9A),
                 modifier = Modifier.padding(bottom = 30.dp)
             )
+            Text(
+                text = "Aswin Lutfian Prasetyo",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color(0xFF6A1B9A),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
         }
     }
 }
