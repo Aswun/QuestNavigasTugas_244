@@ -59,7 +59,13 @@ fun Beranda (
                 color = Color(0xFF6A1B9A),
                 modifier = Modifier.padding(bottom = 4.dp)
             )
-
+            Text(
+                text = "2025",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF6A1B9A),
+                modifier = Modifier.padding(bottom = 30.dp)
+            )
         }
     }
 }
