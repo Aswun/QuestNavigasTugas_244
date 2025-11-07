@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -75,7 +76,22 @@ fun DaftarPeserta (
                         shape = MaterialTheme.shapes.medium,
                         elevation = CardDefaults.cardElevation(2.dp)
                     ) {
-
+                        Column(
+                            modifier = Modifier.padding(16.dp)
+                        ) {
+                            Text(
+                                text = label,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Gray
+                            )
+                            Text(
+                                text = value,
+                                fontSize = 16.sp,
+                                color = Color.Black,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
                     }
             }
         }
