@@ -12,5 +12,11 @@ fun DaftarPeserta (
     onBackToHome: () -> Unit,
     onGoToForm: () -> Unit
 ) {
+    val pesertaData = listOf(
+        "NAMA LENGKAP" to "As Wun",
+        "JENIS KELAMIN" to "Laki-Laki",
+        "STATUS PERKAWINAN" to "Belum Menikah",
+        "ALAMAT" to "Yogyakarta"
+    )
 
 }
