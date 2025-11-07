@@ -120,6 +120,8 @@ fun DaftarPeserta (
                         fontSize = 16.sp
                     )
                 }
+
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }
