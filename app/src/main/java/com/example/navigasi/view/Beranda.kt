@@ -4,8 +4,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -81,6 +85,19 @@ fun Beranda (
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(bottom = 30.dp)
             )
+
+            Button(
+                onClick = onSubmitClick,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF6A1B9A),
+                    contentColor = Color.White
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .padding(horizontal = 40.dp)
+            ) {
+                Text(text = "Lihat Daftar Peserta", fontSize = 16.sp)
         }
     }
 }
