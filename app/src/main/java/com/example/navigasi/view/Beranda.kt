@@ -14,5 +14,15 @@ fun Beranda (
     Scaffold(
         modifier = modifier,
         containerColor = Color(0xFFE1BEE7)
-    )
+    ) {
+        paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(20.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
+    }
 }
