@@ -53,6 +53,13 @@ fun Beranda (
                     .width(200.dp)
                     .padding(bottom = 20.dp)
             )
+            Text(
+                text = "MOBILE APP",
+                fontSize = 14.sp,
+                color = Color(0xFF6A1B9A),
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+
         }
     }
 }
