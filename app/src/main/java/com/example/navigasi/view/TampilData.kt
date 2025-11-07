@@ -26,52 +26,67 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.fillMaxWidth
+import com.example.navigasi.DataDiri
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData (
+    dataDiri: DataDiri,
     onBackBtnClick:()-> Unit
 ) {
+    // Membangun daftar item dari objek DataDiri yang diterima
     val items = listOf(
-        Pair(stringResource(R.string.nama_lengkap), "Contoh Nama"),
-        Pair(stringResource(R.string.jenis_kelamin), "Lainnya"),
-        Pair(stringResource(R.string.alamat), "Yogyakarta")
+        Pair(stringResource(R.string.nama_lengkap), dataDiri.nama),
+        Pair(stringResource(R.string.jenis_kelamin), dataDiri.jenisKelamin),
+        Pair(stringResource(R.string.alamat), dataDiri.alamat)
     )
     Scaffold(
         modifier = Modifier,
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.tampil), color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.teal_700))
+                colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.purple_700)) // Mengubah warna header
             )
         }) { isiRuang ->
-        Column(modifier = Modifier.padding(isiRuang),
-            verticalArrangement = Arrangement.SpaceBetween) {
-            Column (modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))) {
+        Column(
+            modifier = Modifier
+                .padding(isiRuang)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(dimensionResource(id = R.dimen.padding_medium))
+                    .weight(1f), // Agar konten mengisi ruang sisa
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
+            ) {
                 items.forEach { item ->
-                    Column {
+                    Column(modifier = Modifier.padding(vertical = 4.dp)) {
                         Text(
                             item.first.uppercase(),
-                            fontSize = 16.sp
+                            fontSize = 14.sp, 
+                            color = Color.DarkGray
                         )
                         Text(
                             text = item.second,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily.Cursive,
-                            fontSize = 22.sp
+                            fontWeight = FontWeight.Black,
+                            fontFamily = FontFamily.SansSerif,
+                            fontSize = 24.sp
                         )
                     }
-                    HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
+                    HorizontalDivider(thickness = 2.dp, color = Color(0xFFD1C4E9)) // Mengubah warna dan ketebalan divider
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-                Button(
-                    modifier = Modifier.fillMaxWidth(),
-                    onClick = onBackBtnClick
-                ) {
-                    Text(text = stringResource(R.string.back))
-                }
+            }
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = dimensionResource(id = R.dimen.padding_medium))
+                    .padding(bottom = dimensionResource(id = R.dimen.padding_medium)),
+                onClick = onBackBtnClick
+            ) {
+                Text(text = stringResource(R.string.back))
             }
         }
     }
